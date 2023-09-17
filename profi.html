@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello, world!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/theatre/0.5.0/theatre.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/modern-normalize@v2.0.0/modern-normalize.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.0/gsap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/3.7.0/chart.min.js"></script>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/84cda12812.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="sktyle.css">
+    <link rel="icon" href="favicon.png">
+
+    <style>
+        /* Styles from the first stylesheet */
+        body {
+            margin: 0;
+            background-color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            background: linear-gradient(135deg, #333, #ff5722);
+            color: #fff;
+        }
+
+        .profile-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 70%;
+            padding: 20px;
+            animation: slide-up 1s ease-in-out forwards, fade-in 1s ease-in-out forwards;
+        }
+
+        .profile-text {
+            text-align: left;
+            width: 70%;
+        }
+
+        .profile-heading {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .profile-paragraph {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-image: url('./profile.png');
+            background-size: cover;
+            background-position: center;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #ff5722, #00BCD4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientCycle 6s infinite;
+        }
+
+        .gradient-text::after {
+            animation-name: gradientCycle;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+            content: "";
+        }
+
+        @keyframes gradientCycle {
+            10% {
+                content: "Data scientist";
+            }
+            60% {
+                content: "Data analyst";
+            }
+            90% {
+                content: "ML engineer";
+            }
+        }
+
+        @keyframes slide-up {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Styles from the second stylesheet */
+        .navbar-container {
+            position: absolute;
+            top: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-image: linear-gradient(to right, #333, #ff6752);
+            border-radius: 50px;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .navbar {
+            display: flex;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            background-color: transparent;
+            border-radius: 50px;
+            overflow: hidden;
+        }
+
+        .nav-item {
+            flex: 1;
+            text-align: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-item a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            display: block;
+        }
+
+        .nav-item::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background-color: #ff5722;
+            transform-origin: center bottom;
+            transform: scaleY(0);
+            transition: transform 0.3s;
+            z-index: -1;
+        }
+
+        .nav-item:hover::before {
+            transform: scaleY(1);
+        }
+
+        .nav-item:hover {
+            background-color: #ff5722;
+            color: #fff;
+            transform: scale(1.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+        }
+
+        .skills-container {
+            background: linear-gradient(135deg, #333, #ff5722);
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            max-width: 100%;
+            margin: 0;
+        }
+        .skills-container:hover{
+            background: linear-gradient(135deg, #100644, #ff5709);
+        }
+
+
+        .skills-container.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .skills-heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+         .header-text h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .header-text p {
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-top: 0;
+        }
+
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .skills-category {
+            flex-basis: calc(33.33% - 20px);
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            margin: 0 0 20px 0;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skills-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .skills-category h2 {
+            font-size: 1.5rem;
+            margin-top: 0;
+        }
+
+        .skills-category ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skills-category li {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+
+
+
+        /* Styling for the projects container */
+        .projects-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #333, #ff5722);
+            min-height: 100vh;
+        }
+
+        .projects-container:hover{
+            background: linear-gradient(135deg, #100644, #ff5709);
+        }
+
+        /* Styling for section heading */
+        .section-heading {
+            width: 100%;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+
+        .section-heading h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        .section-heading p {
+            font-size: 1.2rem;
+        }
+
+        /* Styling for project cards */
+        .project-card {
+            width: 500px;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            margin: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
+
+            .project-card:hover {
+                transform: scale(1.05);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            }
+
+
+        /* Styling for project content */
+        .project-content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        /* Styling for square card */
+        .square-card {
+            width: 200px;
+            height: 200px;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .square-card img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+
+        /* Styling for hover text (show on hover) */
+        .project-card:hover .project-hover-text {
+            opacity: 1;
+        }
+
+        .project-hover-text {
+            background-color: violet;
+            border-radius: 100px;
+            font-size: 10px;
+            color: white;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 5px 10px;
+            opacity: 0;
+        }
+
+        .hover-img{
+            height: 25px;
+            width: 25px;
+        }
+
+        /* Styling for rectangle card */
+        .rectangle-card {
+            flex-grow: 1;
+            width: 300px;
+            background-color: #fff;
+            padding: 20px;
+        }
+
+        /* Styling for project information */
+        .project-info-content {
+            text-align: left;
+        }
+
+        .project-info h3 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .project-info p {
+            font-size: 1rem;
+            margin: 10px 0;
+        }
+
+
+        /* Styling for certifications container */
+        .certifications-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #333, #ff5722);
+            min-height: 100vh;
+        }
+
+
+        .certifications-container:hover{
+            background: linear-gradient(135deg, #100644, #ff5709);
+        }
+
+
+        /* Styling for certification cards */
+        .certification-card {
+            width: 90%;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+            background-color: #fff;
+        }
+
+        .certification-card:hover {
+            transform: scale(1.2) rotateX(30deg) rotateY(30deg);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Styling for certification information */
+        .certification-info {
+            padding: 20px;
+            text-align: left;
+        }
+
+        .certification-info h3 {
+            font-size: 1.5rem;
+            margin: 0;
+            color: #fff; /* Text color */
+            background-color: #ff5722; /* Background color */
+            padding: 10px; /* Padding for the background (top, right, bottom, left) */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        .certification-info p {
+            font-size: 1rem;
+            margin: 10px 0;
+            color: #666;
+            max-width: 70%; /* Adjust the maximum width as needed */
+        }
+
+        .contact-container {
+            background: linear-gradient(135deg, #333, #ff5722);
+            padding: 40px 0;
+            color: #fff;
+            text-align: center;
+        }
+
+        .contact-container:hover{
+            background: linear-gradient(135deg, #100644, #ff5709);
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .contact-heading {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-paragraph {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            display: inline-block;
+            margin-top: 20px; /* Decreased distance between form and text */
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            color: white;
+        }
+
+        .contact-form textarea {
+            resize: none;
+        }
+
+
+        .contact-form input[type="text"]::placeholder,
+        .contact-form input[type="email"]::placeholder,
+        .contact-form textarea::placeholder {
+            color: black; /* Replace with the color you want */
+        }
+        .contact-button {
+            background: #ff5722;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 15px 25px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .contact-button:hover {
+            background: navajowhite;
+            color: black;
+        }
+
+
+
+</style>
+</head>
+<body>
+
+<div class="navbar-container">
+    <ul class="navbar">
+        <li class="nav-item"><a href="#home">HOME</a></li>
+        <li class="nav-item"><a href="#skills">SKILLS</a></li>
+        <li class="nav-item"><a href="#projects">PROJECTS</a></li>
+        <li class="nav-item"><a href="#certifications">CERTIFICATIONS</a></li>
+        <li class="nav-item"><a href="#contact">CONTACT</a></li>
+    </ul>
+</div>
+
+<div class="profile-container" id="home">
+    <div class="profile-content">
+        <div class="profile-text">
+            <h1 class="profile-heading">
+                Hello! I am
+                <span class="gradient-text"></span>
+            </h1>
+            <p class="profile-paragraph">Hi! I’m Jake, a product designer based in Berlin. I create user-friendly interfaces for fast-growing startups.</p>
+        </div>
+        <div>
+            <div class="profile-pic"></div>
+            <div class="social-link-group py-5">
+                <a href="mailto:ahmad.bsds@gmail.com"><i class="fa-solid fa-envelope fa-bounce fa-2xl px-2" style="color: #ffffff;"></i></a>
+                <a href="https://www.linkedin.com/in/ahmad-bsds/"><i class="fa-brands fa-linkedin fa-bounce fa-2xl px-2" style="color: #ffffff;"></i></a>
+                <a href="https://twitter.com/insightWisdomer"><i class="fa-brands fa-square-x-twitter fa-bounce fa-2xl px-2" style="color: #ffffff;"></i></a>
+                <a href="https://github.com/ahmad-bsds"><i class="fa-brands fa-github fa-bounce fa-2xl px-2" style="color: #ffffff;"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="skills-container" id="skills">
+    <div class="section-heading">
+        <div class="header-text standardAnimate">
+            <h1>Skills</h1>
+            <p>I bring expertise to the table</p>
+        </div>
+    </div>
+    <div class="skills-list">
+        <div class="skills-category standardAnimate">
+            <h2>Technical</h2>
+            <ul>
+                <li>Web Development</li>
+                <li>Programming</li>
+                <li>Database Management</li>
+            </ul>
+        </div>
+        <div class="skills-category standardAnimate">
+            <h2>Non-Technical</h2>
+            <ul>
+                <li>Communication</li>
+                <li>Problem Solving</li>
+                <li>Leadership</li>
+            </ul>
+        </div>
+        <div class="skills-category standardAnimate">
+            <h2>Tools</h2>
+            <ul>
+                <li>Git</li>
+                <li>Photoshop</li>
+                <li>VS Code</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="projects-container" id="projects">
+        <div class="section-heading">
+            <div class="header-text standardAnimate">
+                <h1>Projects</h1>
+                <p>Explore my futuristic projects</p>
+            </div>
+        </div>
+
+        <a href="#" class="project-card standardAnimate">
+            <div class="project-content">
+                <div class="square-card">
+                    <div class="project-image">
+                        <img src="./profile.png" alt="Python Project">
+                    </div>
+                    <div class="project-hover-text">
+                        <div class="hover-img">
+                        <img src="./certified.png" alt="Certified Image">
+                    </div> certified skill
+                </div>
+                </div>
+                <div class="rectangle-card">
+                    <div class="project-info">
+                        <div class="project-info-content">
+                            <h3>Python Project</h3>
+                            <p>Short description of the Python project goes here.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="#" class="project-card standardAnimate">
+            <div class="project-content">
+                <div class="square-card">
+                    <div class="project-image">
+                        <img src="./profile.png" alt="Python Project">
+                    </div>
+                    <div class="project-hover-text">
+                        <div class="hover-img">
+                        <img src="./certified.png" alt="Certified Image">
+                    </div> certified skill
+                </div>
+                </div>
+                <div class="rectangle-card">
+                    <div class="project-info">
+                        <div class="project-info-content">
+                            <h3>Python Project</h3>
+                            <p>Short description of the Python project goes here.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+
+    <a href="#" class="project-card standardAnimate">
+        <div class="project-content">
+            <div class="square-card">
+                <div class="project-image">
+                    <img src="./profile.png" alt="Project">
+                </div>
+                <div class="project-hover-text">
+                    <div class="hover-img">
+                    <img src="./certified.png" alt="Certified Image">
+                    </div> certified skill
+                </div>
+            </div>
+            <div class="rectangle-card">
+                <div class="project-info">
+                    <div class="project-info-content">
+                        <h3>Project 1</h3>
+                        <p>Short description of Project 1 goes here.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+
+
+
+        <a href="#" class="project-card standardAnimate">
+            <div class="project-content">
+                <div class="square-card">
+                    <div class="project-image">
+                        <img src="./profile.png" alt="Python Project">
+                    </div>
+                    <div class="project-hover-text">
+                        <div class="hover-img">
+                        <img src="./certified.png" alt="Certified Image">
+                    </div> certified skill
+                </div>
+                </div>
+                <div class="rectangle-card">
+                    <div class="project-info">
+                        <div class="project-info-content">
+                            <h3>Python Project</h3>
+                            <p>Short description of the Python project goes here.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        
+        <!-- Add more project cards for different categories (e.g., SQL, Power BI) -->
+        
+    </div>
+
+
+
+<div class="certifications-container" id="certifications">
+    <div class="section-heading standardAnimate">
+        <div class="header-text standardAnimate">
+            <h1>Certifications</h1>
+            <p>Explore my traditional certifications</p>
+        </div>
+    </div>
+
+    <!-- Certification Card 1 -->
+    <div class="certification-card standardAnimate">
+        <div class="certification-info">
+            <h3>Python</h3>
+            <p>Short description of Certification 1 goes here.</p>
+        </div>
+    </div>
+
+    <!-- Certification Card 2 -->
+    <div class="certification-card standardAnimate">
+        <div class="certification-info">
+            <h3>Power BI</h3>
+            <p>Short description of Certification 2 goes here.</p>
+        </div>
+    </div>
+
+    <!-- Add more certification cards as needed -->
+
+</div>
+
+<div class="contact-container" id="contact">
+    <div class="contact-content">
+        <h1 class="contact-heading standardAnimate">Let's Collaborate</h1>
+        <p class="contact-paragraph">Ready to turn data into insights? Contact me and let's explore the possibilities.</p>
+    </div>
+    <div class="contact-form">
+        <form>
+            <input type="text" name="name" class="name-field standardAnimate" placeholder="Your Name">
+            <input type="email" name="email" class="email-field standardAnimate" placeholder="Your Email">
+            <textarea name="message" class="message-field standardAnimate" placeholder="Your Message"></textarea>
+            <button class="contact-button standardAnimate">Send</button>
+        </form>
+    </div>
+</div>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.0/gsap.min.js"></script>
+    <script>
+        gsap.from(".navbar-container", { duration: 1, y: -100, opacity: 0, ease: "bounce.out" });
+        gsap.from(".nav-item", { duration: 1, delay: 1, opacity: 0, x: -50, stagger: 0.2 });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/animation.gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/debug.addIndicators.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.1/gsap.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
