@@ -58,17 +58,6 @@
             margin-bottom: 30px;
         }
 
-
-        .profile-pic {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background-image: url('./profile.png');
-            background-size: cover;
-            background-position: center;
-            transition: opacity 1s ease-in-out;
-        }
-
         .gradient-text {
             background: linear-gradient(135deg, #ff5722, #00BCD4);
             -webkit-background-clip: text;
@@ -114,26 +103,13 @@
             }
         }
 
-        /* Styles from the second stylesheet */
-        .navbar-container {
-            position: absolute;
-            top: 5%;
-            left: 50%;
-            transform: translateX(-50%);
-            background-image: linear-gradient(to right, #333, #ff6752);
-            border-radius: 50px;
-            overflow: hidden;
-            z-index: 1;
-        }
+      /* Styles from the second stylesheet */
 
         .navbar {
             display: flex;
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            background-color: transparent;
-            border-radius: 50px;
-            overflow: hidden;
+            position: relative;
+            background-image: linear-gradient(to right, #333, #ff6752);
+            z-index: 999;
         }
 
         .nav-item {
@@ -218,8 +194,8 @@
 
 
         .skills-list {
-            display: flex;
-            flex-wrap: wrap;
+            display: flow-root;
+            overflow-wrap: unset;
             justify-content: space-between;
         }
 
@@ -260,6 +236,7 @@
         /* Styling for the projects container */
         .projects-container {
             display: flex;
+            flex-direction: column;
             flex-wrap: wrap;
             justify-content: space-around;
             align-items: center;
@@ -310,76 +287,119 @@
             }
 
 
-        /* Styling for project content */
-        .project-content {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-        }
+            *,
+            *::before,
+            *::after {
+              box-sizing: border-box;
+            }
 
-        /* Styling for square card */
-        .square-card {
-            width: 200px;
-            height: 200px;
-            background-color: #fff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border-radius: 10px;
-            position: relative;
-        }
+            body {
+              background-color: #324968;
+              -webkit-font-smoothing: antialiased;
+              -moz-font-smoothing: antialiased;
+              -o-font-smoothing: antialiased;
+            }
 
-        .square-card img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: cover;
-        }
+            .main {
+              margin: 0 auto;
+            }
 
-        /* Styling for hover text (show on hover) */
-        .project-card:hover .project-hover-text {
-            opacity: 1;
-        }
+            .cards {
+              display: contents;
+              flex-wrap: wrap;
+              list-style: none;
+              margin: 0;
+              padding: 0;
+            }
 
-        .project-hover-text {
-            background-color: violet;
-            border-radius: 100px;
-            font-size: 10px;
-            color: white;
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            padding: 5px 10px;
-            opacity: 0;
-        }
+            .cards_item {
+              display: flex;
+              padding: 1rem;
+              max-width: 800px;
+              margin: 0 auto;
+            }
 
-        .hover-img{
-            height: 25px;
-            width: 25px;
-        }
+            .card_image {
+              max-height: 250px;
+              margin-top: -24px;
+            }
+            .card_image img {
+              width: 100%;
+              max-width: 800px;
+              height: 100%;
+              object-fit: cover;
+            }
+            .card_image:after {
+              content: "";
+              display: block;
+              width: 100%;
+              height: 100px;
+              position: relative;
+              top: -100px;
+              background: linear-gradient(0deg, #091014 10%, rgba(0, 0, 0, 0) 100%);
+            }
 
-        /* Styling for rectangle card */
-        .rectangle-card {
-            flex-grow: 1;
-            width: 300px;
-            background-color: #fff;
-            padding: 20px;
-        }
+            .card {
+              background-color: crimson;
+              border-radius: 0.25rem;
+              box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+              display: flex;
+              flex-direction: column;
+              overflow: hidden;
+            }
 
-        /* Styling for project information */
-        .project-info-content {
-            text-align: left;
-        }
+            .card_content {
+              padding: 1rem;
+              z-index: 1;
+              display: block;
+            }
 
-        .project-info h3 {
-            font-size: 1.5rem;
-            margin: 0;
-        }
+            .card_title {
+              font-family: "Lobster", cursive;
+              font-size: 72px;
+              line-height: 72px;
+              margin-top: -50px;
+              margin-bottom: 24px;
+              text-shadow: black 1px 0 15px;
+              color: white;
+            }
 
-        .project-info p {
-            font-size: 1rem;
-            margin: 10px 0;
-        }
+            .card_text {
+              color: #DDDACB;
+              font-family: "Raleway", sans-serif;
+              font-weight: 200;
+            }
+            .card_text p {
+              max-width: 700px;
+            }
+
+            .card_price {
+              position: relative;
+              top: 10px;
+              right: 16px;
+              text-align: right;
+              color: white;
+              font-family: "Raleway", sans-serif;
+              height: 24px;
+              font-size: 36px;
+              font-weight: 400;
+              text-shadow: black 3px 0px 6px;
+            }
+
+            #item_fig .card:after {
+              content: "Seasonal";
+              font-family: "Raleway", sans-serif;
+              color: rgba(234, 225, 175, 0.8);
+              font-weight: 600;
+              text-transform: uppercase;
+              display: block;
+              width: 10ch;
+              height: 1.5em;
+              padding: 0.2em 0.4em;
+              position: relative;
+              bottom: calc(100% - 2.5em);
+              left: 1em;
+            }
 
 
         /* Styling for certifications container */
@@ -453,6 +473,17 @@
             background: linear-gradient(135deg, #100644, #ff5709);
         }
 
+        .about-container {
+            background: linear-gradient(135deg, #333, #ff5722);
+            padding: 40px 0;
+            color: #fff;
+            text-align: center;
+        }
+
+        .about-container:hover{
+            background: linear-gradient(135deg, #100644, #ff5709);
+        }
+
         .contact-content {
             max-width: 800px;
             margin: 0 auto;
@@ -522,33 +553,61 @@
 </head>
 <body>
 
-<div class="navbar-container">
-    <ul class="navbar">
-        <li class="nav-item"><a href="#home">HOME</a></li>
-        <li class="nav-item"><a href="#skills">SKILLS</a></li>
-        <li class="nav-item"><a href="#projects">PROJECTS</a></li>
-        <li class="nav-item"><a href="#certifications">CERTIFICATIONS</a></li>
-        <li class="nav-item"><a href="#contact">CONTACT</a></li>
-    </ul>
-</div>
+<nav class="navbar navbar-expand-lg" aria-label="Tenth navbar example">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-<div class="profile-container" id="home">
-    <div class="profile-content">
-        <div class="profile-text">
-            <h1 class="profile-heading">
+      <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="#home">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a href="#skills">SKILLS</a>
+          </li>
+         <li class="nav-item">
+            <a href="#projects">PROJECTS</a>
+          </li>
+         <li class="nav-item">
+            <a href="#certifications">CERTIFICATIONS</a>
+          </li>
+         <li class="nav-item">
+            <a href="#contact">CONTACT</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<div class="about-container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+      <div class="col-10 col-sm-8 col-lg-6">
+        <img src="./profile.png" class="d-block mx-lg-auto img-fluid profile-pic" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+      </div>
+      <div class="col-lg-6">
+        <h1 class="profile-heading">
                 Hello! I am
                 <span class="gradient-text"></span>
-            </h1>
-            <p class="profile-paragraph">Hi! I’m Jake, a product designer based in Berlin. I create user-friendly interfaces for fast-growing startups.</p>
-        </div>
-        <div>
-            <div class="profile-pic"></div>
-            <div class="social-link-group py-5">
+        </h1>
+        <p class="lead">Quickly design and customize responsive mobile-first sites with Bootstrap.</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                 <a href="mailto:ahmad.bsds@gmail.com"><i class="fa-solid fa-envelope fa-bounce fa-2xl px-2" style="color: #ffffff;"></i></a>
                 <a href="https://www.linkedin.com/in/ahmad-bsds/"><i class="fa-brands fa-linkedin fa-bounce fa-2xl px-2" style="color: #ffffff;"></i></a>
                 <a href="https://twitter.com/insightWisdomer"><i class="fa-brands fa-square-x-twitter fa-bounce fa-2xl px-2" style="color: #ffffff;"></i></a>
                 <a href="https://github.com/ahmad-bsds"><i class="fa-brands fa-github fa-bounce fa-2xl px-2" style="color: #ffffff;"></i></a>
-            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="profile-container" id="home">
+    <div class="profile-content">
+        <div class="profile-text">
+            <p class="profile-paragraph">Hi! I’m Jake, a product designer based in Berlin. I create user-friendly interfaces for fast-growing startups.</p>
+        </div>
+        <div>
         </div>
     </div>
 </div>
@@ -595,101 +654,55 @@
                 <p>Explore my futuristic projects</p>
             </div>
         </div>
+<!-- new -->
+        <div class="main">
+          <ul class="cards">
+            <li class="cards_item" id="item_salad">
+              <div class="card">
+                <div class="card_price">$9</div>
+                <div class="card_image"><img src="https://assets.codepen.io/652/photo-1468777675496-5782faaea55b.jpeg" alt="mixed vegetable salad in a mason jar. "></div>
+                <div class="card_content">
+                  <h2 class="card_title">Farmstand Salad</h2>
+                  <div class="card_text">
+                    <p>Dig into the freshest veggies of the season! This salad-in-a-jar features a mixture of leafy greens and seasonal vegetables, fresh from the farmer's market.</p>
+                    <p>Served with your choice of dressing on the side: housemade ranch, cherry balsamic vinaigrette, creamy chipotle, avocado green goddess, or honey mustard. Add your choice of protein for $2 more. </p>
+                  </div>
+                </div>
+              </div>
+            </li>
 
-        <a href="#" class="project-card standardAnimate">
-            <div class="project-content">
-                <div class="square-card">
-                    <div class="project-image">
-                        <img src="./profile.png" alt="Python Project">
-                    </div>
-                    <div class="project-hover-text">
-                        <div class="hover-img">
-                        <img src="./certified.png" alt="Certified Image">
-                    </div> certified skill
+            <li class="cards_item" id="item_reuben">
+              <div class="card">
+                <div class="card_price">$18</div>
+                <div class="card_image"><img src="https://assets.codepen.io/652/photo-1520174691701-bc555a3404ca.jpeg" alt="a Reuben sandwich on wax paper. "></div>
+                <div class="card_content">
+                  <h2 class="card_title">Ultimate Reuben</h2>
+                  <div class="card_text">
+                    <p>All great meals take time, but this one takes it to the next level! More than 650 hours of fermenting, brining, aging, and curing goes into each and every one of our legendary Reuben sandwiches.
+                    </p>
+                    <p>Every element of this extraordinary sandwich is handcrafted in our kitchens, from the rye bread baked from our secret recipe to the cave-aged Swiss cheese, right down to the pickle. The only thing we didn't make on the premises is the toothpick (but we're looking into how to do that). </p>
+                    <p>This unforgettable sandwich has all of the classic Reuben elements: corned beef, rye bread, creamy Russian dressing, sauerkraut, plus a sweet gherkin pickle. No substitions please!
+                    <p>
+                      <p>Add a side of french fries or sweet potato fries for $2 more, or our housemade pub chips for $1.</p>
+                  </div>
                 </div>
+              </div>
+            </li>
+            <li class="cards_item" id="item_fig">
+              <div class="card">
+                <div class="card_price">$16</div>
+                <div class="card_image"><img src="https://assets.codepen.io/652/photo-1544510808-91bcbee1df55.jpeg" alt="A side view of a plate of figs and berries. "></div>
+                <div class="card_content">
+                  <h2 class="card_title">Fig &amp; Berry Plate</h2>
+                  <div class="card_text">
+                    <p>A succulent sextet of fresh figs join with a selection of bodacious seasonal berries in this refreshing, shareable dessert.</p>
+                    <p>Choose your drizzle: cherry-balsamic vinegar, local honey, or housemade chocolate sauce. </p>
+                  </div>
                 </div>
-                <div class="rectangle-card">
-                    <div class="project-info">
-                        <div class="project-info-content">
-                            <h3>Python Project</h3>
-                            <p>Short description of the Python project goes here.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-
-        <a href="#" class="project-card standardAnimate">
-            <div class="project-content">
-                <div class="square-card">
-                    <div class="project-image">
-                        <img src="./profile.png" alt="Python Project">
-                    </div>
-                    <div class="project-hover-text">
-                        <div class="hover-img">
-                        <img src="./certified.png" alt="Certified Image">
-                    </div> certified skill
-                </div>
-                </div>
-                <div class="rectangle-card">
-                    <div class="project-info">
-                        <div class="project-info-content">
-                            <h3>Python Project</h3>
-                            <p>Short description of the Python project goes here.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-
-
-    <a href="#" class="project-card standardAnimate">
-        <div class="project-content">
-            <div class="square-card">
-                <div class="project-image">
-                    <img src="./profile.png" alt="Project">
-                </div>
-                <div class="project-hover-text">
-                    <div class="hover-img">
-                    <img src="./certified.png" alt="Certified Image">
-                    </div> certified skill
-                </div>
-            </div>
-            <div class="rectangle-card">
-                <div class="project-info">
-                    <div class="project-info-content">
-                        <h3>Project 1</h3>
-                        <p>Short description of Project 1 goes here.</p>
-                    </div>
-                </div>
-            </div>
+              </div>
+            </li>
+          </ul>
         </div>
-    </a>
-
-
-
-        <a href="#" class="project-card standardAnimate">
-            <div class="project-content">
-                <div class="square-card">
-                    <div class="project-image">
-                        <img src="./profile.png" alt="Python Project">
-                    </div>
-                    <div class="project-hover-text">
-                        <div class="hover-img">
-                        <img src="./certified.png" alt="Certified Image">
-                    </div> certified skill
-                </div>
-                </div>
-                <div class="rectangle-card">
-                    <div class="project-info">
-                        <div class="project-info-content">
-                            <h3>Python Project</h3>
-                            <p>Short description of the Python project goes here.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
         
         <!-- Add more project cards for different categories (e.g., SQL, Power BI) -->
         
