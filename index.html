@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="og:title" content="Muhammad Ahmad's Portfolio">
-  <meta property="og:description" content="Explore the portfolio of Muhammad Ahmad, a passionate data science student showcasing skills, projects, and achievements in the field.">
-  <meta property="og:url" content="https://ahmad-ds.pro">
-  <meta property="og:image" content="./profile.png">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
+     <meta property="og:title" content="MUHAMMAD AHMAD's Portfolio">
+     <meta property="og:description" content="Explore the portfolio of Muhammad Ahmad, a passionate data science student showcasing skills, projects, and achievements in the field.">
+     <meta property="og:url" content="https://ahmad-ds.pro">
+     <meta property="og:image" content="./profile.png">
+     <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
     <title>MUHAMMAD AHMAD</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Explore the portfolio of Muhammad Ahmad, a passionate data science student showcasing skills, projects, and achievements in the field.">
@@ -197,89 +197,6 @@
             font-size: 1.2rem;
         }
 
-            .main {
-              margin: 0 auto;
-            }
-
-            .cards {
-              align-items: center;
-              display: inline-block;
-              flex-wrap: wrap;
-              list-style: none;
-              margin: 0;
-              padding: 0;
-            }
-
-            .cards_item {
-              display: flex;
-            }
-
-            .card_image {
-              max-height: 250px;
-              margin-top: -24px;
-            }
-            .card_image img {
-              width: 100%;
-              max-width: 800px;
-              height: 100%;
-              object-fit: cover;
-            }
-            .card_image:after {
-              content: "";
-              display: block;
-              width: 100%;
-              height: 100px;
-              position: relative;
-              top: -100px;
-              background: linear-gradient(0deg, #091014 10%, rgba(0, 0, 0, 0) 100%);
-            }
-
-            .card {
-              background-color: #7D1935;
-              border-radius: 7%;
-              box-shadow: 0 20px 40px -14px rgba(4, 1, 6, 0.25);
-              display: flex;
-              flex-direction: column;
-              overflow: hidden;
-            }
-
-            .card_content {
-              padding: 1rem;
-              z-index: 1;
-              display: block;
-            }
-
-            .card_title {
-              font-family: "Lobster", cursive;
-              font-size: 72px;
-              line-height: 72px;
-              margin-top: -50px;
-              margin-bottom: 24px;
-              text-shadow: black 1px 0 15px;
-              color: white;
-            }
-
-            .card_text {
-              color: #DDDACB;
-              font-family: "Raleway", sans-serif;
-              font-weight: 200;
-            }
-            .card_text p {
-              max-width: 700px;
-            }
-
-            .card_price {
-              position: relative;
-              top: 10px;
-              right: 16px;
-              text-align: right;
-              color: #EEB76B;
-              font-family: "Raleway", sans-serif;
-              height: 24px;
-              font-size: 20px;
-              font-weight: 400;
-              text-shadow: black 3px 0px 6px;
-            }
 
 
         /* Styling for certifications container */
@@ -478,10 +395,14 @@
         </h1>
         <p class="lead">Quickly design and customize responsive mobile-first sites with Bootstrap.</p>
         <div class="gap-2 d-md-flex justify-content-md-center">
-                <a href="mailto:ahmad.bsds@gmail.com"><i class="fa-solid fa-envelope fa-bounce fa-2xl px-2" style="color: #ffffff;"></i></a>
-                <a href="https://www.linkedin.com/in/ahmad-bsds/"><i class="fa-brands fa-linkedin fa-bounce fa-2xl px-2" style="color: #ffffff;"></i></a>
-                <a href="https://twitter.com/insightWisdomer"><i class="fa-brands fa-square-x-twitter fa-bounce fa-2xl px-2" style="color: #ffffff;"></i></a>
-                <a href="https://github.com/ahmad-bsds"><i class="fa-brands fa-github fa-bounce fa-2xl px-2" style="color: #ffffff;"></i></a>
+                <a href="mailto:ahmad.bsds@gmail.com"><i class="fa-solid fa-envelope fa-bounce fa-2xl px-2" style="color: #111111;"></i></a>
+                <a href="https://www.linkedin.com/in/ahmad-bsds/"><i class="fa-brands fa-linkedin fa-bounce fa-2xl px-2" style="color: #111111;"></i></a>
+                <a href="https://twitter.com/insightWisdomer"><i class="fa-brands fa-square-x-twitter fa-bounce fa-2xl px-2" style="color: #111111;"></i></a>
+                <a href="https://github.com/ahmad-bsds"><i class="fa-brands fa-github fa-bounce fa-2xl px-2" style="color: #111111;"></i></a>
+        </div>
+        <div class="gap-2 d-md-flex justify-content-md-center py-3">
+            <a type="button" class="btn btn-success" href="...">Resume</a>
+            <a type="button" class="btn btn-success" href="#projects">Portfolio</a>
         </div>
       </div>
     </div>
@@ -556,54 +477,35 @@
             </div>
         </div>
 <!-- new -->
-        <div class="main">
-          <ul class="cards">
+        <div class="card text-bg-dark">
+          <img src="./profile.png" class="card-img" alt="...">
+          <div class="card-img-overlay">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><a href="#" class="btn btn-primary">Explore me</a></p>
+          </div>
+        </div>
 
-            <li class="cards_item py-3 standardAnimate" id="item_salad">
-              <div class="card">
-                <div class="card_price">Certified</div>
-                <div class="card_image"><img src="https://assets.codepen.io/652/photo-1468777675496-5782faaea55b.jpeg" alt="mixed vegetable salad in a mason jar. "></div>
-                <div class="card_content">
-                  <h2 class="card_title">Farmstand Salad</h2>
-                  <div class="card_text">
-                    <p>Dig into the freshest veggies of the season! This salad-in-a-jar features a mixture of leafy greens and seasonal vegetables, fresh from the farmer's market.</p>
-                    <p>Served with your choice of dressing on the side: housemade ranch, cherry balsamic vinaigrette, creamy chipotle, avocado green goddess, or honey mustard. Add your choice of protein for $2 more. </p>
-                  </div>
-                </div>
-              </div>
-            </li>
+        <div class="py-3"></div>
 
-            <li class="cards_item py-3 standardAnimate" id="item_reuben">
-              <div class="card">
-                <div class="card_price">Certified</div>
-                <div class="card_image"><img src="https://assets.codepen.io/652/photo-1520174691701-bc555a3404ca.jpeg" alt="a Reuben sandwich on wax paper. "></div>
-                <div class="card_content">
-                  <h2 class="card_title">Ultimate Reuben</h2>
-                  <div class="card_text">
-                    <p>All great meals take time, but this one takes it to the next level! More than 650 hours of fermenting, brining, aging, and curing goes into each and every one of our legendary Reuben sandwiches.
-                    </p>
-                    <p>Every element of this extraordinary sandwich is handcrafted in our kitchens, from the rye bread baked from our secret recipe to the cave-aged Swiss cheese, right down to the pickle. The only thing we didn't make on the premises is the toothpick (but we're looking into how to do that). </p>
-                    <p>This unforgettable sandwich has all of the classic Reuben elements: corned beef, rye bread, creamy Russian dressing, sauerkraut, plus a sweet gherkin pickle. No substitions please!
-                    <p>
-                      <p>Add a side of french fries or sweet potato fries for $2 more, or our housemade pub chips for $1.</p>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="cards_item py-3 standardAnimate" id="item_fig">
-              <div class="card">
-                <div class="card_price">Certified</div>
-                <div class="card_image"><img src="https://assets.codepen.io/652/photo-1544510808-91bcbee1df55.jpeg" alt="A side view of a plate of figs and berries. "></div>
-                <div class="card_content">
-                  <h2 class="card_title">Fig &amp; Berry Plate</h2>
-                  <div class="card_text">
-                    <p>A succulent sextet of fresh figs join with a selection of bodacious seasonal berries in this refreshing, shareable dessert.</p>
-                    <p>Choose your drizzle: cherry-balsamic vinegar, local honey, or housemade chocolate sauce. </p>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
+        <div class="card text-bg-dark">
+          <img src="./profile.png" class="card-img" alt="...">
+          <div class="card-img-overlay">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><a href="#" class="btn btn-primary">Explore me</a></p>
+          </div>
+        </div>
+
+        <div class="py-3"></div>
+
+        <div class="card text-bg-dark">
+          <img src="./profile.png" class="card-img" alt="...">
+          <div class="card-img-overlay">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><a href="#" class="btn btn-primary">Explore me</a></p>
+          </div>
         </div>
         
         <!-- Add more project cards for different categories (e.g., SQL, Power BI) -->
@@ -653,7 +555,34 @@
             <button class="contact-button standardAnimate">Send</button>
         </form>
     </div>
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top ">
+    <div class="col-md-4 d-flex align-items-center">
+      <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+        <svg class="bi" width="30" height="24"><use href="./profile.png"></use></svg>
+      </a>
+      <span class="mb-3 mb-md-0">© MUHAMMAD AHMAD</span>
+    </div>
+
+    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+     <li class="ms-3">
+      <a href="mailto:ahmad.bsds@gmail.com"><i class="fa-solid fa-envelope fa-bounce fa-2xl px-2" style="color: #ffffff;"></i></a>
+      </li>
+
+      <li class="ms-3">
+    <a href="https://www.linkedin.com/in/ahmad-bsds/"><i class="fa-brands fa-linkedin fa-bounce fa-2xl px-2" style="color: #ffffff;"></i></a>
+    </li>
+
+    <li class="ms-3">
+    <a href="https://twitter.com/insightWisdomer"><i class="fa-brands fa-square-x-twitter fa-bounce fa-2xl px-2" style="color: #ffffff;"></i></a>
+    </li>
+
+    <li class="ms-3">
+    <a href="https://github.com/ahmad-bsds"><i class="fa-brands fa-github fa-bounce fa-2xl px-2" style="color: #ffffff;"></i></a>
+    </li>
+    </ul>
+  </footer>
 </div>
+
 
 <script type="text/javascript">
     // function([string1, string2],target id,[color1,color2])    
